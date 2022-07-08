@@ -54,6 +54,7 @@ public class Validation {
     public static String checkInputCourse(String msg) {
         Scanner sc = new Scanner(System.in);
         String course;
+        // Loop until user enter correct course name
         while (true) {
             System.out.print(msg);
             course = sc.nextLine();
@@ -81,13 +82,18 @@ public class Validation {
         String input;
         System.out.println(msg);
         input = sc.nextLine();
+        // Loop until user enter correct 'y' or 'n'
         while (true) {
+            // Condition use to check input is empty
             if (input.isEmpty()) {
                 System.out.println("Input could not be empty");
             } else {
+                // Condition use to check input equals 'Y' or 'y'
                 if (input.equals("Y") || input.equals("y")) {
                     return true;
-                } else if (input.equals("N") || input.equals("n")) {
+                }
+                // Condition use to check input equals 'N' or 'n'
+                else if (input.equals("N") || input.equals("n")) {
                     return false;
                 } else {
                     System.out.println("Please enter Yes(Y) or No(N)");
@@ -101,13 +107,18 @@ public class Validation {
         String input;
         System.out.print(msg);
         input = sc.nextLine();
+        // Loop run until user enter 'u' or 'd'
         while (true) {
+            // Condition use to check input is empty
             if (input.isEmpty()) {
                 System.out.println("Input could not be empty");              
             } else {
+                // Condition use to check input equals 'U' or 'u'
                 if (input.equals("U") || input.equals("u")) {
                     return true;
-                } else if (input.equals("D") || input.equals("d")) {
+                } 
+                // Condition use to check input equals 'D' or 'd'
+                else if (input.equals("D") || input.equals("d")) {
                     return false;
                 } else {
                     System.out.println("Please enter (U) to update or (D) to delete");
@@ -122,6 +133,7 @@ public class Validation {
         //loop until user input correct
         while (true) {
             String result = sc.nextLine().trim();
+            // Condition use to check input is empty
             if (result.isEmpty()) {
                 System.err.println("Not empty");
                 System.out.print("Enter again: ");
@@ -133,8 +145,11 @@ public class Validation {
 
     public static boolean checkStudentExist(ArrayList<Student> ls, String id,
             String studentName, String semester, String courseName) {
+        // Loop use  to traverse list ls with student
         for (Student student : ls) {
-            if (id.equalsIgnoreCase(student.getID())
+            // Condition use to check id at parameter equals id when traverse list ls with student
+            // studentName,semester,courseName are same for id
+            if (    id.equalsIgnoreCase(student.getID())
                     && studentName.equalsIgnoreCase(student.getStudentName())
                     && semester.equalsIgnoreCase(student.getSemester())
                     && courseName.equalsIgnoreCase(student.getCourseName())) {
@@ -219,7 +234,10 @@ public class Validation {
 
     public static boolean checkReportExist(ArrayList<Report> lr, String name,
             String course, int total) {
+        // traverse list lr
         for (Report report : lr) {
+            // Condition use to check name equals name of student at list report when traverse with report
+            // is equals parameter, total and course are same for name
             if (name.equalsIgnoreCase(report.getStudent().getStudentName())
                     && total == report.getTotalCourse()
                     && course.equals(report.getStudent().getCourseName())) {

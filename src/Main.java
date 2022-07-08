@@ -17,6 +17,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Student> stl = new ArrayList<>();
         Manager mng = new Manager();
+        // Loop until user want to exit program
         while (true) {
             menu("WELCOME TO STUDENT MANAGEMENT");
             int choice = Validation.checkInt("Your choice: ", 1, 5);
