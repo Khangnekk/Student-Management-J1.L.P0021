@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,7 +60,6 @@ public class Validation {
             // Condition use to check course is empty
             if (course.isEmpty()) {
                 System.out.println("Input could not be Empty.");
-                continue;
             } else {
                 // Condition use to check course equls Java or course equals .Net or course equals C/C++
                 if (course.equalsIgnoreCase("Java")
@@ -84,7 +84,6 @@ public class Validation {
         while (true) {
             if (input.isEmpty()) {
                 System.out.println("Input could not be empty");
-                continue;
             } else {
                 if (input.equals("Y") || input.equals("y")) {
                     return true;
@@ -92,7 +91,6 @@ public class Validation {
                     return false;
                 } else {
                     System.out.println("Please enter Yes(Y) or No(N)");
-                    continue;
                 }
             }
         }
@@ -105,8 +103,7 @@ public class Validation {
         input = sc.nextLine();
         while (true) {
             if (input.isEmpty()) {
-                System.out.println("Input could not be empty");
-                continue;
+                System.out.println("Input could not be empty");              
             } else {
                 if (input.equals("U") || input.equals("u")) {
                     return true;
@@ -114,11 +111,37 @@ public class Validation {
                     return false;
                 } else {
                     System.out.println("Please enter (U) to update or (D) to delete");
-                    continue;
                 }
             }
 
         }
+    }
+
+    public static String checkInputString() {
+        Scanner sc = new Scanner(System.in);
+        //loop until user input correct
+        while (true) {
+            String result = sc.nextLine().trim();
+            if (result.isEmpty()) {
+                System.err.println("Not empty");
+                System.out.print("Enter again: ");
+            } else {
+                return result;
+            }
+        }
+    }
+
+    public static boolean checkStudentExist(ArrayList<Student> ls, String id,
+            String studentName, String semester, String courseName) {
+        for (Student student : ls) {
+            if (id.equalsIgnoreCase(student.getID())
+                    && studentName.equalsIgnoreCase(student.getStudentName())
+                    && semester.equalsIgnoreCase(student.getSemester())
+                    && courseName.equalsIgnoreCase(student.getCourseName())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static String checkID(String msg, String err, int mode, List<Student> st) {
@@ -192,5 +215,17 @@ public class Validation {
             }
         }
         return false;
+    }
+
+    public static boolean checkReportExist(ArrayList<Report> lr, String name,
+            String course, int total) {
+        for (Report report : lr) {
+            if (name.equalsIgnoreCase(report.getStudent().getStudentName())
+                    && total == report.getTotalCourse()
+                    && course.equals(report.getStudent().getCourseName())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

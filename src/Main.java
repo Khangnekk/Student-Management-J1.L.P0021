@@ -22,7 +22,7 @@ public class Main {
             int choice = Validation.checkInt("Your choice: ", 1, 5);
             switch(choice){
                 case 1:
-                    mng.createStudent(3, "--- Create student ---",stl);
+                    mng.createStudent(3, "--- Create ---",stl);
                     break;
                 case 2:
                     mng.findAndSort("--- Find and sort ---",stl);
@@ -31,7 +31,7 @@ public class Main {
                     mng.updateOrDeleteStudent("--- Update and delete ---",stl);
                     break;
                 case 4:
-                    mng.report("--- Report ---");
+                    mng.report("--- Report ---",stl);
                     break;
                 case 5:
                     return;
